@@ -17,7 +17,8 @@ package net.securnetwork.itebooks.downloader;
  *
  */
 public class EbookInfo {
-
+	// add variable for to complete the url
+	private static final String BASE_URL="http://it-ebooks.info";
 	// Fields
 	private Integer siteId;
 	private String siteURL;
@@ -114,8 +115,16 @@ public class EbookInfo {
 		this.fileFormat = fileFormat;
 	}
 	public String getDownloadLink() {
-		return downloadLink;
-	}
+		//if downloadLink start by http
+		if (downloadLink.startsWith("http"))
+		{
+			return downloadLink;
+		} else
+		{
+		//else BASE_URL+downloadLink, if the link is on the site
+			return BASE_URL+downloadLink;
+		}
+		}
 	public void setDownloadLink(String downloadLink) {
 		this.downloadLink = downloadLink;
 	}
